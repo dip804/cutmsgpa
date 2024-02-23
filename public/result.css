@@ -39,9 +39,9 @@ body {
 
 @keyframes border-top{
 0%{width: 0px; height: 0px;}
-25%{width: 95px; height: 0px;}
-50%{width: 95px; height: 35px;}
-100%{width: 95px; height: 35px;}
+25%{width: 98px; height: 0px;}
+50%{width: 98px; height: 35px;}
+100%{width: 98px; height: 35px;}
 
 }
 
@@ -49,8 +49,8 @@ body {
 0%{width: 0px; height: 0px; opacity: 0;}
 50%{width: 0px; height: 0px; opacity: 0;}
 50.1%{width: 0px; height: 0px; opacity: 0;}
-75%{width: 95px; height: 0px; opacity: 1;}
-100%{width: 95px; height: 35px; opacity: 1;}
+75%{width: 98px; height: 0px; opacity: 1;}
+100%{width: 98px; height: 35px; opacity: 1;}
 }
 
 }
