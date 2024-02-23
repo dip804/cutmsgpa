@@ -22,7 +22,7 @@ body {
 
     .excelTable {
         width: 90%;
-    font-size: 10px;
+    font-size: 12px;
 }
 .img h1{
     font-size: 35px;
@@ -34,7 +34,7 @@ body {
 }
 
 #btnn{
-    margin-left: 70%;
+    margin-left: 60%;
 }
 
 @keyframes border-top{
