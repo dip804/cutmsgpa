@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CGPA Calculator</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.5/xlsx.full.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <script>
+        setTimeout(() => {
+            confetti({
+                particleCount: 5000,
+                spread: 300,
+                origin: { y: 0.5 },
+                disableForReducedMotion: true
+            });
+        }, 500);
+    </script>
+</head>
+<body>
+    <div class="img">
+        <img src="logo.png" alt="Cutm logo">
+        <h1>CUTM RESULT</h1>
+    </div>
+    <div class="con">
+        <h1>CGPA Calculator</h1>
+        <div class="box">
+            <label class="text" for="registrationNumber">Enter Registration Number: </label>
+            <input type="text" id="registrationNumber" />
+            <div class="butn">
+                <button class="bt" onclick="calculateSGPA()">Submit</button>
+                <a href="https://cgpa-nqij.onrender.com/" class="bt" id="btn">Refresh</a>
+            </div>
+        </div>
+        <script>
+            function calculateSGPA() {
+                const registrationNumber = document.getElementById('registrationNumber').value;
+                if (!registrationNumber) {
+                    alert('Please enter a registration number.');
+                    return;
+                }
+
+                const excelFileUrl = './resulte.xlsx';
+                fetch(excelFileUrl)
+                    .then(response => response.arrayBuffer())
+                    .then(data => {
+                        const workbook = XLSX.read(data, { type: 'array' });
+                        const sheetName = workbook.SheetNames[0];
+                        const sheet = workbook.Sheets[sheetName];
+
+                        const matchingRows = findRowsByRegistrationNumber(sheet, registrationNumber);
+                        if (matchingRows.length > 0) {
+                            // Registration number is correct, redirect to result page
+                            window.location.href = `result-page.html?regi=${encodeURIComponent(registrationNumber)}`;
+                        } else {
+                            alert('Registration number not found.');
+                        }
+                    });
+            }
+
+            function findRowsByRegistrationNumber(sheet, registrationNumber) {
+                const grades = XLSX.utils.sheet_to_json(sheet, { header: 1 });
+                const regNoColumnIndex = grades[0].indexOf('Reg_No');
+                const matchingRows = grades.filter(row => row[regNoColumnIndex] === registrationNumber);
+                return matchingRows;
+            }
+        </script>
+    </div>
+</body>
+</html>
