@@ -40,8 +40,8 @@ body {
 @keyframes border-top{
 0%{width: 0px; height: 0px;}
 25%{width: 98px; height: 0px;}
-50%{width: 98px; height: 30px;}
-100%{width: 98px; height: 30px;}
+50%{width: 98px; height: 25px;}
+100%{width: 98px; height: 25px;}
 
 }
 
@@ -50,7 +50,7 @@ body {
 50%{width: 0px; height: 0px; opacity: 0;}
 50.1%{width: 0px; height: 0px; opacity: 0;}
 75%{width: 98px; height: 0px; opacity: 1;}
-100%{width: 98px; height: 30px; opacity: 1;}
+100%{width: 98px; height: 25px; opacity: 1;}
 }
 
 }
